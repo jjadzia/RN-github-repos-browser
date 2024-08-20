@@ -1,14 +1,15 @@
 import React, { useCallback } from 'react'
 import { View, Text, Pressable } from 'react-native'
-
-import { useThemedStyles } from '@/hooks/useThemedStyles'
-
-import { createStyles } from './styles'
-import { RepoListItem } from '../RepoList'
-import { AutoSizeImage } from '@/components/AutoSizeImage/AutoSizeImage'
 import { useRouter } from 'expo-router'
 
-export default function RepoItem({ item }: { item: RepoListItem }) {
+import { useThemedStyles } from '@/hooks/useThemedStyles'
+import { createStyles, REPO_ITEM_HEIGHT } from './styles'
+import { AutoSizeImage } from '@/components/AutoSizeImage/AutoSizeImage'
+import { RepoListItemType } from '@/models/githubRepos'
+
+export default function RepoItem({
+  item,
+}: Readonly<{ item: RepoListItemType }>) {
   const styles = useThemedStyles(createStyles)
 
   const router = useRouter()
@@ -25,7 +26,7 @@ export default function RepoItem({ item }: { item: RepoListItem }) {
           {item.description}
         </Text>
       </View>
-      <AutoSizeImage uri={item.avatar_url} height={80} />
+      <AutoSizeImage uri={item.avatar_url} height={REPO_ITEM_HEIGHT} />
     </Pressable>
   )
 }

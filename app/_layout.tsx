@@ -10,6 +10,7 @@ import * as SplashScreen from 'expo-splash-screen'
 import 'react-native-reanimated'
 
 import { useColorScheme } from '@/hooks/useColorScheme'
+import { SearchResultsProvider } from '@/contexts/SearchResultContext'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -33,10 +34,12 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="[repoId]" />
-      </Stack>
+      <SearchResultsProvider>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="index" />
+          <Stack.Screen name="[repoId]" />
+        </Stack>
+      </SearchResultsProvider>
     </ThemeProvider>
   )
 }

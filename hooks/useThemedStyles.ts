@@ -1,6 +1,6 @@
-import { Colors, ColorsType } from '@/constants/Colors'
 import { useMemo } from 'react'
 import { useColorScheme } from 'react-native'
+import { Colors, ColorsType } from '@/constants/Colors'
 
 function getColorsForTheme(isDarkMode: boolean) {
   if (isDarkMode) return Colors.dark

@@ -4,20 +4,14 @@ import { FlatList, View } from 'react-native'
 import { useThemedStyles } from '@/hooks/useThemedStyles'
 import RepoItem from '../RepoItem'
 import { createStyles } from './styles'
+import { RepoListItemType } from '@/models/githubRepos'
 
-export type RepoListItem = {
-  id: number
-  stargazers_count: number
-  watchers_count: number
-  forks_count: number
-  name: string
-  description: string
-  avatar_url: string
-}
+type Props = Omit<
+  ComponentProps<typeof FlatList<RepoListItemType>>,
+  'renderItem'
+>
 
-type Props = Omit<ComponentProps<typeof FlatList<RepoListItem>>, 'renderItem'>
-
-export function ReposList({ data, style, ...props }: Props) {
+export function ReposList({ data, style, ...props }: Readonly<Props>) {
   const styles = useThemedStyles(createStyles)
 
   const Separator = useCallback(

@@ -7,7 +7,8 @@ import { createStyles } from './styles'
 import { useRouter } from 'expo-router'
 import { CustomIcon, IconNames } from '../CustomIcon'
 
-export default function PageHeader({ title }: { title: string }) {
+type Props = { title: string }
+export default function PageHeader({ title }: Readonly<Props>) {
   const styles = useThemedStyles(createStyles)
 
   const router = useRouter()

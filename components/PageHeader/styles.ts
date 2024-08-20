@@ -14,5 +14,8 @@ export const createStyles = (colors: ColorsType) =>
       paddingHorizontal: Spacing.small,
       textAlign: 'center',
       color: colors.text,
+      marginLeft: -Spacing.large,
+      fontWeight: 'bold',
+      zIndex: -1,
     },
   })

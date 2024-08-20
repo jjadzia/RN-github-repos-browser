@@ -13,11 +13,16 @@ import { CommonStrings } from '@/assets/strings/en'
 
 type Props = ComponentProps<typeof TextInput> & {
   containerStyle?: ViewStyle
-  showReturnIcon?: boolean
-  onTextChange?: (text: string) => void
+  showXIcon?: boolean
+  onClear?: () => void
 }
 
-export function TextField({ containerStyle, ...props }: Props) {
+export function TextField({
+  containerStyle,
+  showXIcon,
+  onClear,
+  ...props
+}: Props) {
   const styles = useThemedStyles(createStyles)
 
   const textInputRef = useRef<TextInput>(null)
@@ -34,6 +39,10 @@ export function TextField({ containerStyle, ...props }: Props) {
   const onBlur = useCallback(() => {
     setIsInputFocused(false)
   }, [])
+  const onXPress = useCallback(() => {
+    textInputRef?.current?.clear()
+    onClear?.()
+  }, [])
 
   return (
     <Pressable
@@ -47,12 +56,15 @@ export function TextField({ containerStyle, ...props }: Props) {
       <CustomIcon name={IconNames.Search} onPress={focusInput} />
       <TextInput
         style={styles.textInput}
-        {...props}
         ref={textInputRef}
         onFocus={onFocus}
         onBlur={onBlur}
         placeholder={CommonStrings.SearchPlaceholder}
+        {...props}
       />
+      {showXIcon && (
+        <CustomIcon name={IconNames.CrossCircled} onPress={onXPress} />
+      )}
     </Pressable>
   )
 }

@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { ColorsType } from '@/constants/Colors'
-import { BorderWidths, Spacing } from '@/constants/Styling'
-import { Radius } from '@/constants/Styling'
+import { BorderWidths, Spacing, Radius } from '@/constants/Styling'
 
 export const createStyles = (colors: ColorsType) =>
   StyleSheet.create({
@@ -11,6 +10,7 @@ export const createStyles = (colors: ColorsType) =>
       borderRadius: Radius.small,
       borderWidth: BorderWidths.default,
       borderColor: colors.text,
+      margin: Spacing.default,
     },
     focusedBorder: {
       borderColor: colors.fieldBorder,

@@ -36,7 +36,7 @@ export function CustomIcon({
   width = IconSize.medium,
   height = IconSize.medium,
   onPress,
-}: Props) {
+}: Readonly<Props>) {
   const styles = useThemedStyles(createStyles)
 
   return (
