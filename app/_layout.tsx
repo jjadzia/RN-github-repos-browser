@@ -33,9 +33,9 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="homePage" options={{ headerShown: false }} />
-        <Stack.Screen name="repoDetails" />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="[repoId]" />
       </Stack>
     </ThemeProvider>
   )
